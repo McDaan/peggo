@@ -339,7 +339,7 @@ func (s *peggyBroadcastClient) broadcastEthereumEvents(events []sortableEvent) e
 		Msg("oracle observed events; sending claims")
 
 	// We send the messages in batches of 10, so that we don't hit any limits
-	msgSets := splitMsgs(msgs, 10)
+	msgSets := splitMsgs(msgs, 100)
 
 	for _, msgSet := range msgSets {
 		txResponse, err := s.broadcastClient.SyncBroadcastMsg(msgSet...)
